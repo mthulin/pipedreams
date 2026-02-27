@@ -3,8 +3,8 @@ Title: Pipe-Friendly Wrappers for Common Statistical Tests and Models
 Version: 0.1.0
 Authors@R: person("Thulin", "Måns", email = "mans@statistikkonsult.com", role = c("aut", "cre"))
 Description: Provides data.frame S3 methods for common statistical functions
-    (t.test, wilcox.test, lm, glm, aov) so that a data frame can be passed as
-    the first argument via the base pipe (|>) without needing the placeholder
+    (including t.test, wilcox.test, lm, glm, aov) so that a data frame can be passed
+    as the first argument via the base pipe (|>) without needing the placeholder
     syntax (data = _).
 License: MIT + file LICENSE
 Encoding: UTF-8
