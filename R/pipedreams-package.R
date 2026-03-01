@@ -8,7 +8,7 @@
 #' - **stats**: `t.test`, `wilcox.test`, `lm`, `glm`, `aov`, `nls`
 #' - **survival**: `survfit`, `coxph`, `survreg`
 #' - **lme4**: `lmer`, `glmer`
-#' - **MASS**: `glm.nb`, `polr`, `lda`, `qda`
+#' - **MASS**: `glm.nb`, `polr`, `rlm`, `lda`, `qda`
 #'
 #' @section Usage:
 #' ```r
@@ -36,6 +36,7 @@
 #' # MASS
 #' MASS::quine   |> glm_nb(Days ~ Sex + Age + Eth)
 #' MASS::housing |> polr(Sat ~ Infl + Type + Cont)
+#' mtcars |> rlm(mpg ~ wt + cyl)
 #' iris    |> lda(Species ~ .)
 #' iris    |> qda(Species ~ .)
 #' ```
