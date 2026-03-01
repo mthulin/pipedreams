@@ -106,3 +106,30 @@ test_that("qda.data.frame errors when formula is not a formula", {
   library(MASS)
   expect_error(iris |> qda("Species ~ ."), "'formula' must be a formula object")
 })
+
+test_that("rlm.data.frame produces same result as MASS::rlm", {
+    skip_if_not_installed("MASS")
+    library(MASS)
+
+    result_pipe  <- mtcars |> rlm(mpg ~ wt + cyl)
+    result_stats <- MASS::rlm(mpg ~ wt + cyl, data = mtcars)
+
+    expect_equal(coef(result_pipe), coef(result_stats))
+    expect_equal(fitted(result_pipe), fitted(result_stats))
+})
+
+test_that("rlm.default still works for non-data.frame first argument", {
+    skip_if_not_installed("MASS")
+    library(MASS)
+
+    result_pipe  <- rlm(mpg ~ wt + cyl, data = mtcars)
+    result_stats <- MASS::rlm(mpg ~ wt + cyl, data = mtcars)
+
+    expect_equal(result_pipe$means, result_stats$means)
+})
+
+test_that("rlm.data.frame errors when formula is not a formula", {
+    skip_if_not_installed("MASS")
+    library(MASS)
+    expect_error(mtcars |> rlm("mpg ~ wt + cyl"), "'formula' must be a formula object")
+})
