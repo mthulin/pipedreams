@@ -165,3 +165,39 @@ qda.data.frame <- function(x, formula, ...) {
     stop("'formula' must be a formula object")
   MASS::qda(formula, data = x, ...)
 }
+
+
+# rlm ----------------------------------------------------------------------
+
+#' @rdname pipe_MASS
+#'
+#' @return For `rlm`: an object of class `"rlm"`, as returned by [MASS::rlm()].
+#'
+#' @examples
+#' if (requireNamespace("MASS", quietly = TRUE)) {
+#'   mtcars |> rlm(mpg ~ wt)
+#' }
+#'
+#' @export
+rlm <- function(x, ...) UseMethod("rlm")
+
+#' @rdname pipe_MASS
+#' @method rlm default
+#' @export
+rlm.default <- function(x, ...) {
+    if (!requireNamespace("MASS", quietly = TRUE))
+        stop("Package 'MASS' is required but not installed.")
+    MASS::rlm(x, ...)
+}
+
+#' @rdname pipe_MASS
+#' @param formula A formula, passed to [MASS::rlm()].
+#' @method rlm data.frame
+#' @export
+rlm.data.frame <- function(x, formula, ...) {
+    if (!requireNamespace("MASS", quietly = TRUE))
+        stop("Package 'MASS' is required but not installed.")
+    if (!inherits(formula, "formula"))
+        stop("'formula' must be a formula object")
+    MASS::rlm(formula, data = x, ...)
+}

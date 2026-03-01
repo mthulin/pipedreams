@@ -44,6 +44,7 @@ lme4::cbpp |> glmer(cbind(incidence, size - incidence) ~ period + (1 | herd),
 # MASS
 MASS::quine   |> glm_nb(Days ~ Sex + Age + Eth)
 MASS::housing |> polr(Sat ~ Infl + Type + Cont)
+mtcars |> rlm(mpg ~ wt + cyl)
 iris    |> lda(Species ~ .)
 iris    |> qda(Species ~ .)
 

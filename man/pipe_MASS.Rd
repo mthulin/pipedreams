@@ -14,6 +14,9 @@
 \alias{qda}
 \alias{qda.default}
 \alias{qda.data.frame}
+\alias{rlm}
+\alias{rlm.default}
+\alias{rlm.data.frame}
 \title{Pipe-friendly wrappers for MASS modelling functions}
 \usage{
 glm_nb(x, ...)
@@ -39,6 +42,12 @@ qda(x, ...)
 \method{qda}{default}(x, ...)
 
 \method{qda}{data.frame}(x, formula, ...)
+
+rlm(x, ...)
+
+\method{rlm}{default}(x, ...)
+
+\method{rlm}{data.frame}(x, formula, ...)
 }
 \arguments{
 \item{x}{For \code{data.frame} methods: a data frame to use as the \code{data}
@@ -47,7 +56,7 @@ corresponding \verb{MASS::} function.}
 
 \item{...}{Additional arguments passed to the underlying function.}
 
-\item{formula}{A formula, passed to \code{\link[MASS:qda]{MASS::qda()}}.}
+\item{formula}{A formula, passed to \code{\link[MASS:rlm]{MASS::rlm()}}.}
 }
 \value{
 For \code{glm_nb} / \code{glm.nb}: an object of class
@@ -59,6 +68,8 @@ For \code{polr}: an object of class \code{"polr"}, as returned by
 For \code{lda}: an object of class \code{"lda"}, as returned by \code{\link[MASS:lda]{MASS::lda()}}.
 
 For \code{qda}: an object of class \code{"qda"}, as returned by \code{\link[MASS:qda]{MASS::qda()}}.
+
+For \code{rlm}: an object of class \code{"rlm"}, as returned by \code{\link[MASS:rlm]{MASS::rlm()}}.
 }
 \description{
 These functions wrap \code{\link[MASS:glm.nb]{MASS::glm.nb()}}, \code{\link[MASS:polr]{MASS::polr()}}, \code{\link[MASS:lda]{MASS::lda()}}, and
@@ -83,6 +94,10 @@ if (requireNamespace("MASS", quietly = TRUE)) {
 
 if (requireNamespace("MASS", quietly = TRUE)) {
   iris |> qda(Species ~ .)
+}
+
+if (requireNamespace("MASS", quietly = TRUE)) {
+  mtcars |> rlm(mpg ~ wt)
 }
 
 }
